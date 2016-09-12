@@ -15,9 +15,10 @@ RUN mkdir -p /home/developer/.IdeaIC2016.2/config/options && \
 RUN chown developer:developer -R /home/developer/.IdeaIC2016.2
 
 # 'Downloading IntelliJ IDEA'
-RUN wget https://download.jetbrains.com/idea/ideaIC-2016.2.2.tar.gz -O /tmp/intellij.tar.gz -q && \
+RUN wget https://download.jetbrains.com/idea/ideaIC-2016.2.2.tar.gz -O /tmp/intellij.tar.gz -q --show-progress && \
     echo 'Installing IntelliJ IDEA' && \
     tar -xf /tmp/intellij.tar.gz --strip-components=1 -C /home/developer/ide/intellij && \
     rm /tmp/intellij.tar.gz
 
+#CMD ["su","-","developer","-c","/home/developer/ide/intellij/bin/idea.sh"]
 CMD ./bin/idea.sh
